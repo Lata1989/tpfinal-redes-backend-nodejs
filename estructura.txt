@@ -1,0 +1,18 @@
+/chatbot
+├── /frontend                  # Carpeta del frontend (React)
+│   ├── /public
+│   ├── /src
+│   └── package.json
+├── /backend                  # Carpeta del backend (Node.js)
+│   ├── /config              # Configuraciones del servidor (incluye db.js)
+│   │   └── db.js            # Conexión a MongoDB
+│   ├── /controllers         # Controladores de las rutas
+│   ├── /routes              # Rutas de la API
+│   │   ├── userRoutes.js    # Rutas para la entidad Usuario
+│   │   ├── chatRoutes.js    # Rutas para la entidad Chat
+│   │   └── conversationRoutes.js # Opcional: Rutas para Conversaciones
+│   ├── /models              # Modelos de los datos para MongoDB
+│   ├── .env                 # Variables de entorno (incluye la URI de MongoDB)
+│   ├── index.js             # Archivo principal del servidor
+│   └── package.json         # Dependencias y scripts
+└── README.md                # Documentación del proyecto

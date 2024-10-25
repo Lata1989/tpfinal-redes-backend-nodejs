@@ -5,7 +5,7 @@ import { connectDB } from './config/db.js'; // Adaptación de la ruta de la base
 
 // Importar rutas
 import userRoutes from './routes/userRoutes.js';
-// import chatRoutes from './routes/chatRoutes.js';
+import chatRoutes from './routes/chatRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/users', userRoutes); // Rutas para usuarios
-// app.use('/api/chats', chatRoutes); // Rutas para chats
+app.use('/api/chats', chatRoutes); // Rutas para chats
 
 // Conexión a MongoDB
 const startServer = async () => {
@@ -42,6 +42,6 @@ startServer();
 
     https://www.youtube.com/watch?v=3nL8e7I_9lo&t
 
-    estoy en: 24:25
+    estoy en: 49:30
 
 */

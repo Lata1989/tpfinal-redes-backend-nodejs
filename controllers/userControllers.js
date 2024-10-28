@@ -1,9 +1,12 @@
 import jwt from "jsonwebtoken";
 import { sendMail } from "../middlewares/sendMail.js";
 
+// OK con Postman y el front
 export const loginUser = async (req, res) => {
     try {
         const { email } = req.body;
+        console.log("El email que se logea es: ", email);
+        console.log("El email que se logea es: ", { email });
 
         // Utiliza la API de MongoDB nativa para buscar el usuario en la colección 'users'
         let user = await global.db.collection('users').findOne({ email });
@@ -25,7 +28,7 @@ export const loginUser = async (req, res) => {
         const otp = Math.floor(Math.random() * 1000000);
 
         // Crear el token JWT con el usuario y el OTP
-        const verifyToken = jwt.sign({ user, otp }, process.env.ACTIVATION_SECRET, { expiresIn: "36000000" });
+        const verifyToken = jwt.sign({ user, otp }, process.env.ACTIVATION_SECRET, { expiresIn: "3600000000" });
 
         // Enviar el OTP al correo del usuario
         await sendMail(email, "ChatBot", otp);
@@ -45,7 +48,10 @@ export const loginUser = async (req, res) => {
 
 export const verifyUser = async (req, res) => {
     try {
+        console.log("El body: ", req.body);
         const { otp, verifyToken } = req.body;
+        console.log("OTP que llega desde el front:", otp);
+        console.log("VerifyToken que llega desde el front:", verifyToken);
 
         const verify = jwt.verify(verifyToken, process.env.ACTIVATION_SECRET);
 
